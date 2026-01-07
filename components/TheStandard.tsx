@@ -137,6 +137,7 @@ const MediaPlaceholder: React.FC<MediaPlaceholderProps> = ({
                     muted
                     loop
                     playsInline
+                    preload="none"
                     className={cn('w-full h-full object-cover', className)}
                 />
             );
@@ -146,6 +147,8 @@ const MediaPlaceholder: React.FC<MediaPlaceholderProps> = ({
                 ref={imageRef}
                 src={src}
                 alt={alt}
+                loading="lazy"
+                decoding="async"
                 className={cn(
                     'w-full h-full object-cover transition-transform duration-1000 ease-out',
                     // Mobile: zoom in smoothly when in view

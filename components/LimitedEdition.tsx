@@ -170,16 +170,19 @@ export const LimitedEdition: React.FC<LimitedEditionProps> = ({ onOpenReservatio
                 "absolute inset-0 z-0 transition-opacity duration-1000",
                 hasEntered ? "opacity-100" : "opacity-0"
             )}>
-                <video
-                    ref={videoRef}
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    className="w-full h-full object-cover opacity-50"
-                >
-                    <source src="/videos/whiskey.mp4" type="video/mp4" />
-                </video>
+                {hasEntered && (
+                    <video
+                        ref={videoRef}
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        preload="none"
+                        className="w-full h-full object-cover opacity-50"
+                    >
+                        <source src="/videos/whiskey.mp4" type="video/mp4" />
+                    </video>
+                )}
 
                 {/* Overlays - softer for video visibility */}
                 <div className="absolute inset-0 bg-gradient-to-b from-[#0a0908]/70 via-transparent to-[#0a0908]/80" />

@@ -152,6 +152,8 @@ export const TheOrigins = () => {
                         <img
                             src={origin.image}
                             alt={origin.country}
+                            loading="lazy"
+                            decoding="async"
                             className="w-full h-full object-cover opacity-80 animate-slow-pan transition-transform duration-200 ease-out"
                             style={{
                                 transform: `translate(${(tiltPos.x - 0.5) * -20}px, ${(tiltPos.y - 0.5) * -20}px) scale(1.05)`

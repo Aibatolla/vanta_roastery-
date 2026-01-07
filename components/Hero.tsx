@@ -156,6 +156,8 @@ export const Hero: React.FC<HeroProps> = ({
           <img
             src={posterSrc}
             alt="Coffee aesthetic"
+            loading="eager"
+            decoding="async"
             className={cn(
               "w-full h-full object-cover origin-center will-change-transform",
               isReady ? "animate-hero-drift opacity-100" : "scale-110 opacity-0 transition-opacity duration-[1500ms]"
