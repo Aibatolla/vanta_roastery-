@@ -201,7 +201,7 @@ export const Atmosphere: React.FC = () => {
         {/* --- HEADER --- */}
         <div className={cn(
           "flex flex-col items-center text-center mb-10 md:mb-16 transition-all duration-[1200ms] ease-out",
-          active ? "opacity-100 translate-y-0 blur-0" : "opacity-0 translate-y-12 blur-sm"
+          active ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
         )}>
           <span className="text-neutral-400 font-sans text-[9px] md:text-[10px] tracking-[0.4em] uppercase font-semibold mb-3 drop-shadow-md">
             The Sensory Spectrum
@@ -221,7 +221,7 @@ export const Atmosphere: React.FC = () => {
           "relative z-20 flex flex-col items-center justify-center mb-12 transition-all duration-1000 delay-200",
           active ? "opacity-100 scale-100" : "opacity-0 scale-90"
         )}>
-          <div className="flex flex-col items-center gap-2 p-4 rounded-sm bg-black/40 backdrop-blur-md border border-white/5 ring-1 ring-white/5 animate-shadow-breathe hover:bg-black/50 transition-colors duration-300">
+          <div className="flex flex-col items-center gap-2 p-4 rounded-sm bg-black/60 md:bg-black/40 md:backdrop-blur-md border border-white/5 ring-1 ring-white/5 animate-shadow-breathe hover:bg-black/50 transition-colors duration-300">
             <div className="flex items-center gap-3">
               <span className="text-[9px] font-sans tracking-[0.2em] font-bold text-neutral-500 uppercase">
                 ROAST LEVEL
@@ -269,7 +269,7 @@ export const Atmosphere: React.FC = () => {
                 style={{ transitionDelay: active ? `${idx * 100}ms` : '0ms' }}
                 className={cn(
                   "group relative aspect-square md:aspect-[4/3] overflow-hidden rounded-md cursor-pointer transition-all duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)]",
-                  "bg-[#141210]/60 backdrop-blur-sm border tap-highlight-transparent",
+                  "bg-[#141210]/80 md:bg-[#141210]/60 md:backdrop-blur-sm border tap-highlight-transparent",
                   active ? "opacity-100 translate-y-0" : "opacity-0 translate-y-16",
                   isActive
                     ? `${flavor.borderClass} bg-gradient-to-b ${flavor.bgGradient} scale-110 shadow-[0_15px_50px_-10px_rgba(0,0,0,0.6)] z-10`
@@ -293,7 +293,7 @@ export const Atmosphere: React.FC = () => {
                   "absolute inset-0 transition-opacity duration-700 pointer-events-none",
                   isActive ? "opacity-100" : "opacity-0 group-hover:opacity-30"
                 )}>
-                  <div className={cn("absolute -top-[50%] -left-[50%] w-[200%] h-[200%] bg-radial-gradient from-current to-transparent opacity-10 blur-3xl animate-pulse", flavor.colorClass)} />
+                  <div className={cn("absolute -top-[50%] -left-[50%] w-[200%] h-[200%] bg-radial-gradient from-current to-transparent opacity-10 blur-3xl animate-pulse hidden md:block", flavor.colorClass)} />
                 </div>
 
                 <div className="absolute inset-0 flex flex-col items-center justify-center p-4 z-20 text-center transform transition-transform duration-700 group-hover:scale-105">
@@ -358,7 +358,7 @@ export const Atmosphere: React.FC = () => {
       {selectedFlavor && (
         <div className="fixed inset-0 z-50 flex items-center justify-center px-4">
           <div
-            className="absolute inset-0 bg-[#0c0a09]/90 backdrop-blur-md animate-fade-in cursor-pointer transition-colors duration-300 hover:bg-[#0c0a09]/95"
+            className="absolute inset-0 bg-[#0c0a09]/95 md:bg-[#0c0a09]/90 md:backdrop-blur-md animate-fade-in cursor-pointer transition-colors duration-300 hover:bg-[#0c0a09]/95"
             onClick={() => setSelectedFlavor(null)}
           />
 
