@@ -27,7 +27,7 @@ export const CartModal: React.FC = () => {
             <Cursor />
             {/* Backdrop */}
             <div
-                className="absolute inset-0 bg-black/70 backdrop-blur-md"
+                className="absolute inset-0 bg-black/80 md:backdrop-blur-md"
                 onClick={closeCart}
             />
 

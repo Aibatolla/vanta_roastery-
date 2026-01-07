@@ -107,7 +107,7 @@ export const MenuModal: React.FC<MenuModalProps> = ({ isOpen, onClose }) => {
             <Cursor />
             {/* Backdrop */}
             <div
-                className="absolute inset-0 bg-black/70 backdrop-blur-md"
+                className="absolute inset-0 bg-black/80 md:backdrop-blur-md"
                 onClick={onClose}
             />
 
@@ -115,8 +115,8 @@ export const MenuModal: React.FC<MenuModalProps> = ({ isOpen, onClose }) => {
             <div className="relative z-10 w-full max-w-5xl max-h-[85vh] md:max-h-[90vh] md:mx-4 bg-gradient-to-b from-[#e8dfd4] via-[#ddd3c5] to-[#d4c8b8] border border-amber-800/30 rounded-2xl shadow-2xl shadow-black/30 flex flex-col overflow-hidden">
 
                 {/* Decorative glow orbs */}
-                <div className="absolute top-0 left-1/4 w-64 h-64 rounded-full bg-amber-400/15 blur-[100px] pointer-events-none" />
-                <div className="absolute bottom-0 right-1/4 w-48 h-48 rounded-full bg-amber-300/10 blur-[80px] pointer-events-none" />
+                <div className="absolute top-0 left-1/4 w-64 h-64 rounded-full bg-amber-400/15 blur-[100px] pointer-events-none hidden md:block" />
+                <div className="absolute bottom-0 right-1/4 w-48 h-48 rounded-full bg-amber-300/10 blur-[80px] pointer-events-none hidden md:block" />
 
                 {/* Header */}
                 <div className="flex-shrink-0 relative px-5 md:px-10 py-5 md:py-6 border-b border-amber-800/20 bg-gradient-to-b from-amber-100/30 to-transparent">

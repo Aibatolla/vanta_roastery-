@@ -78,7 +78,7 @@ export const ReservationModal: React.FC<ReservationModalProps> = ({ isOpen, onCl
             <Cursor />
             {/* Backdrop */}
             <div
-                className="absolute inset-0 bg-black/70 backdrop-blur-md"
+                className="absolute inset-0 bg-black/80 md:backdrop-blur-md"
                 onClick={!isSubmitting ? onClose : undefined}
             />
 
