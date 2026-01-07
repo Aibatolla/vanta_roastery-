@@ -1,5 +1,4 @@
-import React, { useRef, useState } from 'react';
-import { cn } from '../lib/utils';
+import React from 'react';
 import { Magnetic } from './Magnetic';
 
 // --- MOCK DATA ---
@@ -57,4 +56,45 @@ export const TheCollection: React.FC = () => {
         </span>
       </div>
 
-      <div className="relative z-10 max-w-7xl mx-auto
+      <div className="relative z-10 max-w-7xl mx-auto px-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {PRODUCTS.map((product) => (
+            <div key={product.id} className="group relative">
+              <div className="aspect-[3/4] overflow-hidden bg-[#1A1816] relative mb-6">
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700"
+                />
+                {product.isNew && (
+                  <div className="absolute top-4 left-4 bg-[#C4873A] text-[#12100E] text-[10px] font-bold px-2 py-1 uppercase tracking-widest">
+                    New Arrival
+                  </div>
+                )}
+                <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500" />
+              </div>
+
+              <div className="space-y-2">
+                <p className="text-[#8B7355] text-xs tracking-[0.2em] uppercase">{product.type}</p>
+                <h3 className="text-white font-serif text-2xl group-hover:text-[#C4873A] transition-colors duration-300">
+                  {product.name}
+                </h3>
+                <div className="flex items-center gap-2 text-[#666] text-xs tracking-wider uppercase">
+                  {product.notes.join(" • ")}
+                </div>
+                <div className="pt-2 flex items-center justify-between">
+                  <span className="text-white font-mono opacity-60">${product.price}.00</span>
+                  <Magnetic>
+                    <button className="text-[#C4873A] text-xs uppercase tracking-widest hover:text-white transition-colors">
+                      Add to Cart
+                    </button>
+                  </Magnetic>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};

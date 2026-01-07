@@ -9,7 +9,7 @@ import { Cursor } from './Cursor';
 // Красивая панель управления для владельца кофейни
 // Кремовый/бежевый дизайн, премиум эстетика
 
-const ADMIN_PASSWORD = 'vanta2024';
+const ADMIN_PASSWORD = import.meta.env.VITE_ADMIN_PASSWORD || 'vanta2024';
 
 export const AdminPanel: React.FC = () => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
