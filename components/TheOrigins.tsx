@@ -163,35 +163,39 @@ export const TheOrigins = () => {
                         <div className="absolute inset-0 bg-gradient-to-t from-[#2a1f1a] via-transparent to-[#2a1f1a]/30" />
                         <div className="absolute inset-0 bg-gradient-to-r from-[#2a1f1a]/90 via-transparent to-[#2a1f1a]/30" />
 
-                        {/* === LIVING ATMOSPHERE LAYERS === */}
-                        {/* Ethiopia: Mist - More visible */}
-                        {origin.id === 'ethiopia' && (
-                            <div className="absolute inset-0 opacity-40 mix-blend-screen pointer-events-none">
-                                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent w-[200%] h-full animate-fog" />
-                            </div>
-                        )}
-                        {/* Colombia: Rain/Humid - More visible */}
-                        {origin.id === 'colombia' && (
-                            <div className="absolute inset-0 opacity-30 pointer-events-none overflow-hidden">
-                                {[...Array(25)].map((_, i) => (
-                                    <div
-                                        key={i}
-                                        className="absolute w-[1px] bg-white/60 animate-rain"
-                                        style={{
-                                            height: `${Math.random() * 25 + 10}%`,
-                                            left: `${Math.random() * 100}%`,
-                                            animationDelay: `-${Math.random()}s`,
-                                            animationDuration: `${0.4 + Math.random() * 0.4}s`
-                                        }}
-                                    />
-                                ))}
-                            </div>
-                        )}
-                        {/* Panama: Sunbeams - More visible */}
-                        {origin.id === 'panama' && (
-                            <div className="absolute top-0 right-0 w-full h-full opacity-40 mix-blend-screen pointer-events-none overflow-hidden">
-                                <div className="absolute top-[-50%] right-[-50%] w-[200%] h-[200%] bg-[conic-gradient(from_0deg_at_50%_50%,transparent_0deg,rgba(251,191,36,0.15)_20deg,transparent_40deg,rgba(251,191,36,0.15)_60deg,transparent_80deg)] animate-sunbeam" />
-                            </div>
+                        {/* === LIVING ATMOSPHERE LAYERS === Desktop only */}
+                        {!isMobile && (
+                            <>
+                                {/* Ethiopia: Mist */}
+                                {origin.id === 'ethiopia' && (
+                                    <div className="absolute inset-0 opacity-40 mix-blend-screen pointer-events-none">
+                                        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent w-[200%] h-full animate-fog" />
+                                    </div>
+                                )}
+                                {/* Colombia: Rain/Humid */}
+                                {origin.id === 'colombia' && (
+                                    <div className="absolute inset-0 opacity-30 pointer-events-none overflow-hidden">
+                                        {[...Array(25)].map((_, i) => (
+                                            <div
+                                                key={i}
+                                                className="absolute w-[1px] bg-white/60 animate-rain"
+                                                style={{
+                                                    height: `${Math.random() * 25 + 10}%`,
+                                                    left: `${Math.random() * 100}%`,
+                                                    animationDelay: `-${Math.random()}s`,
+                                                    animationDuration: `${0.4 + Math.random() * 0.4}s`
+                                                }}
+                                            />
+                                        ))}
+                                    </div>
+                                )}
+                                {/* Panama: Sunbeams */}
+                                {origin.id === 'panama' && (
+                                    <div className="absolute top-0 right-0 w-full h-full opacity-40 mix-blend-screen pointer-events-none overflow-hidden">
+                                        <div className="absolute top-[-50%] right-[-50%] w-[200%] h-[200%] bg-[conic-gradient(from_0deg_at_50%_50%,transparent_0deg,rgba(251,191,36,0.15)_20deg,transparent_40deg,rgba(251,191,36,0.15)_60deg,transparent_80deg)] animate-sunbeam" />
+                                    </div>
+                                )}
+                            </>
                         )}
                     </div>
                 ))}
