@@ -1,0 +1,9 @@
+# Vanta Roastery - robots.txt
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://vantaroastery.com/sitemap.xml
+
+# Disallow admin
+Disallow: /admin

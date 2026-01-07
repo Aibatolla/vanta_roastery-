@@ -1,0 +1,492 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Global Styles */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Manrope', sans-serif;
+  background-color: #12100E;
+}
+
+/* Dynamic viewport height for mobile */
+.h-dvh {
+  height: 100vh;
+  height: 100dvh;
+}
+
+/* Custom animations */
+@keyframes dust-float {
+
+  0%,
+  100% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(-100vh) translateX(20px);
+    opacity: 0;
+  }
+}
+
+.animate-dust-float {
+  animation: dust-float linear infinite;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 0.6;
+  }
+
+  90% {
+    opacity: 0.6;
+  }
+
+  100% {
+    transform: translateY(-100vh) translateX(10px);
+    opacity: 0;
+  }
+}
+
+@keyframes subtle-zoom {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1.1);
+  }
+}
+
+.animate-subtle-zoom {
+  animation: subtle-zoom 40s ease-in-out infinite alternate;
+}
+
+@keyframes shadow-breathe {
+
+  0%,
+  100% {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  }
+
+  50% {
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+  }
+}
+
+.animate-shadow-breathe {
+  animation: shadow-breathe 4s ease-in-out infinite;
+}
+
+@keyframes text-breathe {
+
+  0%,
+  100% {
+    opacity: 0.9;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+.animate-text-breathe {
+  animation: text-breathe 3s ease-in-out infinite;
+}
+
+@keyframes text-live-glow {
+
+  0%,
+  100% {
+    text-shadow: 0 0 4px currentColor;
+  }
+
+  50% {
+    text-shadow: 0 0 12px currentColor;
+  }
+}
+
+.animate-text-live-glow {
+  animation: text-live-glow 2s ease-in-out infinite;
+}
+
+@keyframes border-shine {
+  0% {
+    transform: translateX(-200%) rotate(45deg);
+  }
+
+  100% {
+    transform: translateX(200%) rotate(45deg);
+  }
+}
+
+.animate-border-shine {
+  animation: border-shine 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% center;
+  }
+
+  100% {
+    background-position: -200% center;
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 3s linear infinite;
+}
+
+/* Radial gradient utilities */
+.bg-radial-gradient {
+  background: radial-gradient(circle, var(--tw-gradient-stops));
+}
+
+.bg-radial-gradient-vignette {
+  background: radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.8) 100%);
+}
+
+/* Slow pulse for highlighted words */
+@keyframes pulse-slow {
+
+  0%,
+  100% {
+    opacity: 1;
+    text-shadow: 0 0 8px currentColor;
+  }
+
+  50% {
+    opacity: 0.8;
+    text-shadow: 0 0 20px currentColor;
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 3s ease-in-out infinite;
+}
+
+/* Title reveal animation */
+@keyframes title-reveal {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+    filter: blur(4px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.animate-title-reveal {
+  animation: title-reveal 1.2s ease-out forwards;
+}
+
+/* Marquee animation for certifications */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 15s linear infinite;
+}
+
+/* Steam rising animation */
+@keyframes steam-rise {
+  0% {
+    stroke-dashoffset: 1000;
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 0;
+  }
+}
+
+.animate-steam-rise {
+  stroke-dasharray: 1000;
+  animation: steam-rise 12s ease-in-out infinite;
+}
+
+/* Horizontal flow animation */
+@keyframes flow-horizontal {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  80% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+.animate-flow-horizontal {
+  animation: flow-horizontal 20s ease-in-out infinite;
+}
+
+/* Simple steam rise for divs */
+@keyframes steam-rise-simple {
+  0% {
+    opacity: 0;
+    transform: translateY(10%) scaleY(0.9);
+  }
+
+  15% {
+    opacity: 0.5;
+  }
+
+  50% {
+    opacity: 0.3;
+    transform: translateY(-15%) scaleY(1);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-40%) scaleY(1.1);
+  }
+}
+
+/* Horizontal flowing line */
+@keyframes flow-line {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Glow pulse animation */
+@keyframes pulse-glow {
+
+  0%,
+  100% {
+    opacity: 0.05;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.2;
+    transform: scale(1.15);
+  }
+}
+
+@keyframes slow-pan {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1.1);
+  }
+}
+
+.animate-slow-pan {
+  animation: slow-pan 20s linear infinite alternate;
+}
+
+/* Atmospheric Effects */
+@keyframes fog-move {
+  0% {
+    transform: translateX(-50%);
+  }
+
+  100% {
+    transform: translateX(50%);
+  }
+}
+
+.animate-fog {
+  animation: fog-move 60s linear infinite alternate;
+}
+
+@keyframes rain-fall {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0.3;
+  }
+
+  100% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
+
+.animate-rain {
+  animation: rain-fall 1s linear infinite;
+}
+
+@keyframes sun-rotate {
+  0% {
+    transform: rotate(0deg);
+    opacity: 0.3;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: rotate(360deg);
+    opacity: 0.3;
+  }
+}
+
+.animate-sunbeam {
+  animation: sun-rotate 60s linear infinite;
+}
+
+@keyframes word-shimmer {
+  0% {
+    color: rgba(255, 255, 255, 0.8);
+    text-shadow: 0 0 0px transparent;
+  }
+
+  50% {
+    color: #fbbf24;
+    text-shadow: 0 0 10px #fbbf24;
+  }
+
+  100% {
+    color: rgba(255, 255, 255, 0.8);
+    text-shadow: 0 0 0px transparent;
+  }
+}
+
+.animate-word-glow {
+  animation: word-shimmer 3s ease-in-out infinite;
+}
+
+/* Elegant underline slide */
+@keyframes underline-slide {
+  0% {
+    width: 0;
+    left: 0;
+  }
+
+  50% {
+    width: 100%;
+    left: 0;
+  }
+
+  100% {
+    width: 0;
+    left: 100%;
+  }
+}
+
+.animate-underline {
+  position: relative;
+}
+
+.animate-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  height: 1px;
+  background: currentColor;
+  animation: underline-slide 4s ease-in-out infinite;
+}
+
+/* Soft breathe (subtle scale) */
+@keyframes soft-breathe {
+
+  0%,
+  100% {
+    opacity: 0.9;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: scale(1.02);
+  }
+}
+
+.animate-breathe {
+  animation: soft-breathe 4s ease-in-out infinite;
+}
+
+/* Staggered fade in */
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out forwards;
+}
+
+/* Gentle float */
+@keyframes gentle-float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+.animate-float {
+  animation: gentle-float 3s ease-in-out infinite;
+}
