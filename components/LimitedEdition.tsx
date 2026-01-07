@@ -22,6 +22,15 @@ export const LimitedEdition: React.FC<LimitedEditionProps> = ({ onOpenReservatio
     const [hasEntered, setHasEntered] = useState(false);
     const [bagsLeft, setBagsLeft] = useState(47);
     const [flavorValues, setFlavorValues] = useState<number[]>([]);
+    const [isMobile, setIsMobile] = useState(false);
+
+    // Detect mobile on mount
+    useEffect(() => {
+        const checkMobile = () => setIsMobile(window.innerWidth < 768);
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
 
     // Set video speed to 1.4x
     useEffect(() => {
@@ -170,7 +179,8 @@ export const LimitedEdition: React.FC<LimitedEditionProps> = ({ onOpenReservatio
                 "absolute inset-0 z-0 transition-opacity duration-1000",
                 hasEntered ? "opacity-100" : "opacity-0"
             )}>
-                {hasEntered && (
+                {/* Video only on desktop to save mobile battery */}
+                {hasEntered && !isMobile && (
                     <video
                         ref={videoRef}
                         autoPlay
@@ -184,29 +194,36 @@ export const LimitedEdition: React.FC<LimitedEditionProps> = ({ onOpenReservatio
                     </video>
                 )}
 
+                {/* Mobile: static gradient background instead of video */}
+                {isMobile && (
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#1a1510] via-[#0a0908] to-[#15100a]" />
+                )}
+
                 {/* Overlays - softer for video visibility */}
                 <div className="absolute inset-0 bg-gradient-to-b from-[#0a0908]/70 via-transparent to-[#0a0908]/80" />
                 <div className="absolute inset-0 bg-gradient-to-r from-[#0a0908]/80 via-transparent to-transparent lg:from-[#0a0908]/90 lg:via-[#0a0908]/30 lg:to-transparent" />
             </div>
 
-            {/* Vapor particles */}
-            <div className="absolute inset-0 pointer-events-none z-10">
-                {[...Array(8)].map((_, i) => (
-                    <div
-                        key={i}
-                        className="absolute rounded-full bg-amber-500/10"
-                        style={{
-                            left: `${20 + Math.random() * 60}%`,
-                            bottom: `${Math.random() * 30}%`,
-                            width: `${8 + Math.random() * 16}px`,
-                            height: `${8 + Math.random() * 16}px`,
-                            animation: `vapor ${10 + Math.random() * 8}s ease-out infinite`,
-                            animationDelay: `${Math.random() * 6}s`,
-                            filter: 'blur(6px)',
-                        }}
-                    />
-                ))}
-            </div>
+            {/* Vapor particles - desktop only */}
+            {!isMobile && (
+                <div className="absolute inset-0 pointer-events-none z-10">
+                    {[...Array(8)].map((_, i) => (
+                        <div
+                            key={i}
+                            className="absolute rounded-full bg-amber-500/10"
+                            style={{
+                                left: `${20 + Math.random() * 60}%`,
+                                bottom: `${Math.random() * 30}%`,
+                                width: `${8 + Math.random() * 16}px`,
+                                height: `${8 + Math.random() * 16}px`,
+                                animation: `vapor ${10 + Math.random() * 8}s ease-out infinite`,
+                                animationDelay: `${Math.random() * 6}s`,
+                                filter: 'blur(6px)',
+                            }}
+                        />
+                    ))}
+                </div>
+            )}
 
             {/* Main content */}
             <div className="relative z-20 min-h-screen flex items-center">
