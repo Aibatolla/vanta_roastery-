@@ -106,13 +106,14 @@ export const TheOrigins = () => {
 
         window.addEventListener('scroll', handleScroll);
         window.addEventListener('mousemove', handleMouseMove);
-        window.addEventListener('deviceorientation', handleDeviceOrientation);
+        // Gyroscope disabled on mobile - too heavy for CPU
+        // window.addEventListener('deviceorientation', handleDeviceOrientation);
 
         return () => {
             window.removeEventListener('resize', checkMobile);
             window.removeEventListener('scroll', handleScroll);
             window.removeEventListener('mousemove', handleMouseMove);
-            window.removeEventListener('deviceorientation', handleDeviceOrientation);
+            // window.removeEventListener('deviceorientation', handleDeviceOrientation);
         };
     }, [isMobile]);
 
@@ -144,8 +145,8 @@ export const TheOrigins = () => {
                         className={cn(
                             "absolute inset-0 transition-all duration-1000 ease-out bg-[#0c0a09]",
                             activeIndex === idx
-                                ? "opacity-100 z-0 scale-100 blur-0"
-                                : "opacity-0 z-0 scale-110 blur-sm"
+                                ? "opacity-100 z-0 scale-100"
+                                : "opacity-0 z-0 scale-110"
                         )}
                     >
                         {/* Image with Parallax (works on mobile via gyroscope) */}
@@ -216,8 +217,8 @@ export const TheOrigins = () => {
                 </div>
 
                 {/* ========= ATMOSPHERE LAYER (Subtle Dust) ========= */}
-                <div className="absolute inset-0 z-[5] pointer-events-none">
-                    {/* Floating Dust Particles - Very subtle now */}
+                <div className="absolute inset-0 z-[5] pointer-events-none hidden md:block">
+                    {/* Floating Dust Particles - Desktop only */}
                     <div className="absolute inset-0">
                         {[...Array(8)].map((_, i) => (
                             <div
@@ -246,8 +247,8 @@ export const TheOrigins = () => {
                                 className={cn(
                                     "transition-all duration-1000 w-full",
                                     activeIndex === idx
-                                        ? "opacity-100 blur-0"
-                                        : "opacity-0 blur-sm absolute pointer-events-none"
+                                        ? "opacity-100"
+                                        : "opacity-0 absolute pointer-events-none"
                                 )}
                             >
                                 {/* Top Bar: Counter + by VANTA */}
@@ -274,7 +275,7 @@ export const TheOrigins = () => {
                                 <div className="mb-4">
                                     <span className={cn(
                                         "inline-block px-5 py-2.5 rounded-full text-base md:text-lg font-medium border-2",
-                                        origin.color, "border-current bg-white/5 backdrop-blur-sm",
+                                        origin.color, "border-current bg-white/10 md:bg-white/5 md:backdrop-blur-sm",
                                         activeIndex === idx ? "animate-fade-in-up" : "opacity-0"
                                     )}>
                                         <span className="opacity-70 mr-1.5">◆</span> {origin.primaryFlavor}
@@ -287,7 +288,7 @@ export const TheOrigins = () => {
                                         <span
                                             key={flavor}
                                             className={cn(
-                                                "px-3 py-1.5 rounded-full text-xs backdrop-blur-sm border",
+                                                "px-3 py-1.5 rounded-full text-xs border",
                                                 "bg-white/5 border-white/10 text-white/70",
                                                 "hover:border-white/30 transition-all duration-300",
                                                 activeIndex === idx ? "animate-fade-in-up" : "opacity-0"
@@ -332,7 +333,7 @@ export const TheOrigins = () => {
                                 </div>
 
                                 {/* Roaster's Note - Clean, minimal */}
-                                <div className="bg-black/30 backdrop-blur-md rounded-lg p-4 md:p-5 border border-white/5 max-w-lg mb-6">
+                                <div className="bg-black/50 md:bg-black/30 md:backdrop-blur-md rounded-lg p-4 md:p-5 border border-white/5 max-w-lg mb-6">
                                     <p className="text-base md:text-lg italic text-white/85 font-serif mb-3 leading-relaxed">
                                         {origin.roasterNote}
                                     </p>
