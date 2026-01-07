@@ -179,8 +179,8 @@ export const LimitedEdition: React.FC<LimitedEditionProps> = ({ onOpenReservatio
                 "absolute inset-0 z-0 transition-opacity duration-1000",
                 hasEntered ? "opacity-100" : "opacity-0"
             )}>
-                {/* Video only on desktop to save mobile battery */}
-                {hasEntered && !isMobile && (
+                {/* Video on all devices */}
+                {hasEntered && (
                     <video
                         ref={videoRef}
                         autoPlay
@@ -192,11 +192,6 @@ export const LimitedEdition: React.FC<LimitedEditionProps> = ({ onOpenReservatio
                     >
                         <source src="/videos/whiskey.mp4" type="video/mp4" />
                     </video>
-                )}
-
-                {/* Mobile: static gradient background instead of video */}
-                {isMobile && (
-                    <div className="absolute inset-0 bg-gradient-to-br from-[#1a1510] via-[#0a0908] to-[#15100a]" />
                 )}
 
                 {/* Overlays - softer for video visibility */}
