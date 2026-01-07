@@ -206,7 +206,7 @@ export const Hero: React.FC<HeroProps> = ({
           )}
           style={{
             transform: `scale(${1 + scrollProgress * 0.12})`,
-            filter: `blur(${scrollProgress * 8}px)`,
+            filter: `blur(${scrollProgress * 4}px)`,
             opacity: 1 - scrollProgress * 1.5,
             letterSpacing: `${-0.02 + scrollProgress * 0.1}em`
           }}
